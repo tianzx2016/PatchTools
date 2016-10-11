@@ -38,7 +38,6 @@ echo svn_line:%svn_line%
 echo device:%device%
 echo tmpResDir:%tmpResDir%
 
-
 echo ===开始更新产品库res_svn===
 svn update %resourcesDIR%\%tmpResDir%
 echo 成功！
@@ -47,28 +46,26 @@ echo 成功！
 echo ===========================================================================
 echo 图片文件打包... 
 CD res\src
-if %resSvnVersionBegin%==0 (
-	if %packpic%==0 (
-		echo =========================1========================
-		call setup-client.bat %svn_line% %platformtype% nopic %traditional% %device%
-	)
-	if %packpic%==1 (
-		echo =========================2========================
-		call setup-client.bat %svn_line% %platformtype% %device% %traditional% %device%
-	)
-)
-
-if %resSvnVersionBegin% GTR 0 (
-	echo =========================3-1========================
-	if %packpic%==0 (
-		echo =========================3========================
+::if %resSvnVersionBegin% GTR 0 (
+	if %packpic%==2 (
+		echo =========================1.区间资源（不打图）========================
 		call setup-client.bat %svn_line% %platformtype% nopic %traditional% %device% %resSvnVersionBegin% %resSvnVersionEnd%
 	)
 	if %packpic%==1 (
-		echo =========================4========================
+		echo =========================2.区间资源（打图）========================
 		call setup-client.bat %svn_line% %platformtype% %device% %traditional% %device% %resSvnVersionBegin% %resSvnVersionEnd%
 	)
-)
+::)
+::if %resSvnVersionBegin%==0 (
+	if %packpic%==4 (
+		echo =========================3.完整资源（不打图）========================
+		call setup-client.bat %svn_line% %platformtype% nopic %traditional% %device%
+	)
+	if %packpic%==3 (
+		echo =========================4.完整资源（打图）========================
+		call setup-client.bat %svn_line% %platformtype% %device% %traditional% %device%
+	)
+::)
 PUSHD %~dp0
 cd ..\..\..
 

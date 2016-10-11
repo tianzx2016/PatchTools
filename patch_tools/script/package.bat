@@ -58,10 +58,10 @@ echo put "output\patch\%packname%.tar.gz">>ftp.up
 echo bye>>ftp.up
 FTP -s:ftp.up
 del ftp.up /q
-del patch\%packname%.tar.gz
+::del output\patch\%packname%.tar.gz
 
 :notload_ftp
-echo ==============不上传FTP================
+::echo ==============不上传FTP================
 
 
 echo ==============补丁打包  结束================

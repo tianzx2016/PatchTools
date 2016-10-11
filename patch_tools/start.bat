@@ -29,7 +29,7 @@ echo 版本库Res（res_svn）:               %res_svn%
 echo 发布库FBB（fbb_svn）:               %fbb_svn%
 echo 资源文件夹名字（resources_name）:   %resources_name%
 
-::进入各项目获取项目特殊参数设置 保存到configadd.txt
+::进入各项目获取项目特殊参数设置 保存到configadd.ini
 if exist script/project/%choose_project%/projectsettings.bat (
 	call script/project/%choose_project%/projectsettings.bat %choose_project%
 )

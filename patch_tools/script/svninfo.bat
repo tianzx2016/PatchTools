@@ -40,7 +40,7 @@ set last_Res_svn_version=0
 :: ===本次产品库版本号===
 set Res_svn_version=0
 
-for /f "tokens=1-3 delims=: " %%a in ('svn info Res/%resources_name%') do (
+for /f "tokens=1-3 delims=: " %%a in ('svn info res') do (
 	if %%a==URL (set res_svn_path=%%b:%%c)
 	if %%a==Relative (set svn_line_real=%%c)
 )
@@ -50,7 +50,7 @@ echo.
 echo 信息：产品库当前线路为%svn_line_real%
 echo.
 
-for /f "tokens=1-2 delims=<>= " %%a in ('svn log Res/%resources_name% -l 1 --xml') do (
+for /f "tokens=1-2 delims=<>= " %%a in ('svn log res -l 1 --xml') do (
 	if %%a==revision (set Res_svn_version=%%b)
 )
 set Res_svn_version=%Res_svn_version:"=%
@@ -112,7 +112,7 @@ echo 信息：语言类型      %language_type%
 echo 信息：上次版本号      %last_version%
 echo 信息：本次版本号      %version%
 echo 信息：上次发布库版本号      %last_FBB_svn_version%
-echo 信息：本次发布库版本号      %FBB_svn_version%
+echo 信息：本次发布库版本号（最新填0)      %FBB_svn_version%
 echo 信息：上次产品库版本号      %last_Res_svn_version%
 echo 信息：本次产品库版本号      %Res_svn_version%
 echo 额外参数

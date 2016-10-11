@@ -43,7 +43,7 @@ for /f "tokens=1-3 delims=: " %%a in ('svn info fbbres/%resources_name%') do (
 )
 echo 信息：发布库库当前地址为%fbb_svn_path%
 
-if not exist Res/%resources_name%/ (
+if not exist res/%resources_name%/ (
 	echo 信息：产品库不存在，正在根据res_svn自动获取，请稍候！
 	svn co %res_svn% Res -q
 ) else (
@@ -51,7 +51,7 @@ if not exist Res/%resources_name%/ (
 	svn update Res
 )
 
-for /f "tokens=1-3 delims=: " %%a in ('svn info Res/%resources_name%') do (
+for /f "tokens=1-3 delims=: " %%a in ('svn info res/%resources_name%') do (
 	if %%a==URL (set res_svn_path=%%b:%%c)
 )
 echo 信息：产品库当前地址为%res_svn_path%
